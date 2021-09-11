@@ -1,6 +1,16 @@
 version: '3.7'
 
 services:
+  web:
+    image: node:16-buster-slim
+    ports:
+     - "3000:3000"
+    command: /bin/bash -c "cd /app && npm run dev"
+    volumes:
+      - ../frontend:/app
+    depends_on:
+      - api
+
   api:
     image: node:16-buster-slim
     ports:
