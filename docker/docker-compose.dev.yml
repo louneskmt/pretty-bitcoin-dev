@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  api:
+    image: node:16-buster-slim
+    ports:
+     - "3001:3333"
+    command: /bin/bash -c "cd /app && node ace migration:run && node ace serve --watch"
+    volumes:
+      - ../backend:/app
+    environment:
+      HOME: /app
+      PORT: 3333
+      HOST: 0.0.0.0
+      NODE_ENV: development
+      APP_KEY: on7ZTZY_2duBrxImfosHNKxrFh-LnmBG
+      DRIVE_DISK: local
+      SESSION_DRIVER: cookie
+      DB_CONNECTION: pg
+      PG_HOST: db
+      PG_PORT: 5432
+      PG_USER: lucid
+      PG_PASSWORD:
+      PG_DB_NAME: lucid
+      MAILING_LIST: bitcoin-dev
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: lucid
+      POSTGRES_USER: lucid
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+volumes:
+  postgres_data:
