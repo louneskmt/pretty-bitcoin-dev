@@ -13,17 +13,7 @@
     "Database": "database",
     "Contracts": "contracts"
   },
-  "preloads": [
-    "./start/routes",
-    "./start/kernel",
-    "./start/importArchive"
-  ],
-  "providers": [
-    "./providers/AppProvider",
-    "@adonisjs/core",
-    "@adonisjs/lucid"
-  ],
-  "aceProviders": [
-    "@adonisjs/repl"
-  ]
+  "preloads": ["./start/routes", "./start/kernel", "./start/importArchive"],
+  "providers": ["./providers/AppProvider", "@adonisjs/core", "@adonisjs/lucid"],
+  "aceProviders": ["@adonisjs/repl"]
 }

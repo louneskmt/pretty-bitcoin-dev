@@ -18,11 +18,13 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from "@ioc:Adonis/Core/Route";
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
-
-Route.get("posts", "PostsController.index");
-Route.get("posts/:id", "PostsController.show").where("id", "[0-9]");
+Route.group(() => {
+  Route.group(() => {
+    Route.get("/posts", "PostsController.index");
+    Route.get("/posts/ids", "PostsController.getIds");
+    Route.post("/posts/search", "PostsController.search");
+    Route.get("/posts/:id", "PostsController.show");
+  }).prefix("/v1");
+}).prefix("/api");

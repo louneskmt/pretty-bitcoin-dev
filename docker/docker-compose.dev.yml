@@ -8,19 +8,21 @@ services:
     command: /bin/bash -c "cd /app && npm run dev"
     volumes:
       - ../frontend:/app
+    environment: 
+      API_URL: api:3001
     depends_on:
       - api
 
   api:
     image: node:16-buster-slim
     ports:
-     - "3001:3333"
+     - "3001:3001"
     command: /bin/bash -c "cd /app && node ace migration:run && node ace serve --watch"
     volumes:
       - ../backend:/app
     environment:
       HOME: /app
-      PORT: 3333
+      PORT: 3001
       HOST: 0.0.0.0
       NODE_ENV: development
       APP_KEY: on7ZTZY_2duBrxImfosHNKxrFh-LnmBG

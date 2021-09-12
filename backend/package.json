@@ -27,6 +27,7 @@
     "@adonisjs/lucid": "^16.0.2",
     "@adonisjs/repl": "^3.1.6",
     "axios": "^0.21.4",
+    "fuse.js": "^6.4.6",
     "luxon": "^2.0.2",
     "moment": "^2.29.1",
     "pg": "^8.7.1",

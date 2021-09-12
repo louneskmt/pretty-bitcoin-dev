@@ -62,7 +62,7 @@ class PipermailService {
 
   public static parseMessages(data: string) {
     const regex: RegExp =
-      /From .* at .*\nFrom: (?<mail>.*) at (?<domain>.*) \((?<name>.*)\)\nDate: (?<date>.*)\nSubject: (?<subject>(?:.|\n|\t)+?(?=Message-ID|In-Reply-To|References))(?:In-Reply-To: <(?<inReplyTo>.*)>\n)?(?:References: (?<references>(?:.|\n|\t)+?(?=Message-ID)))?Message-ID: <(?<id>.*)>\n*(?<content>[\w\W]*?)(?=From|$)/gu;
+      /From .* at .*\nFrom: (?<mail>.*) at (?<domain>.*) \((?<name>.*)\)\nDate: (?<date>.*)\nSubject: (?<subject>(?:.|\n|\t)+?(?=Message-ID|In-Reply-To|References))(?:In-Reply-To: <(?<inReplyTo>.*)>\n)?(?:References: (?<references>(?:.|\n|\t)+?(?=Message-ID)))?Message-ID: <(?<id>.*)>\n*(?<content>[\w\W]*?)(?=From .* at .*\n|$)/gu;
     const matches = data.matchAll(regex);
 
     const messages: object[] = [];
